@@ -1,19 +1,90 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+import {
+  createSwitchNavigator,
+  createStackNavigator,
+  createBottomTabNavigator,
+} from "react-navigation";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+import Ionicons from "react-native-vector-icons/Ionicons";
+import contacts from "./contacts";
+
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+import { fetchUsers } from "./api";
+
+import AddContactScreen from "./screens/AddContactScreen";
+import SettingsScreen from "./screens/SettingsScreen";
+import ContactListScreen from "./screens/ContactListScreen";
+import ContactDetailsScreen from "./screens/ContactDetailsScreen";
+import LoginScreen from "./screens/LoginScreen";
+
+const MainStack = createStackNavigator(
+  {
+    ContactList: ContactListScreen,
+    ContactDetails: ContactDetailsScreen,
+    AddContact: AddContactScreen,
   },
+  {
+    initialRouteName: "ContactList",
+    navigationOptions: {
+      headerTintColor: "#a41034",
+      headerStyle: {
+        backgroundColor: "#fff",
+      },
+    },
+  }
+);
+
+MainStack.navigationOptions = {
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Ionicons name="md-contacts" size={25} color={tintColor} />
+  ),
+};
+
+const MainTabs = createBottomTabNavigator(
+  {
+    Contacts: MainStack,
+    Settings: SettingsScreen,
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: "#a41034",
+    },
+  }
+);
+
+const AppNavigator = createSwitchNavigator({
+  Login: LoginScreen,
+  Main: MainTabs,
 });
+
+export default class App extends Component {
+  state = {
+    contacts,
+  };
+  /*
+  componentDidMount() {
+    this.getUsers();
+  }
+
+  getUsers = async () => {
+    const results = await fetchUsers();
+    this.setState({ contacts: results });
+  };*/
+
+  addContact = (newContact) => {
+    this.setState((prevState) => ({
+      contacts: [...prevState.contacts, newContact],
+    }));
+  };
+
+  render() {
+    return (
+      <Provider store={store}>
+        <MainTabs />
+      </Provider>
+    );
+  }
+}
