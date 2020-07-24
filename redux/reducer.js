@@ -1,6 +1,11 @@
 import { combineReducers } from "redux";
 
-import { UPDATE_USER, UPDATE_CONTACT } from "./actions";
+import {
+  UPDATE_USER,
+  UPDATE_CONTACT,
+  LOG_IN_SUCCESS,
+  LOG_IN_FAILED,
+} from "./actions";
 
 const merge = (prev, next) => Object.assign({}, prev, next);
 
@@ -21,8 +26,20 @@ const userReducer = (state = {}, action) => {
   }
 };
 
+export const authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case LOG_IN_SUCCESS:
+      return merge(state, { token: action.payload });
+    case LOG_IN_FAILED:
+      return merge(state, { loginErr: action.payload });
+    default:
+      return state;
+  }
+};
+
 const reducer = combineReducers({
   user: userReducer,
+  auth: authReducer,
   contacts: contactReducer,
 });
 
