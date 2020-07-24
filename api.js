@@ -10,7 +10,7 @@ export const fetchUsers = async () => {
 };
 
 export const login = async (username, password) => {
-  const response = await fetch("http://192.168.42.15:8000", {
+  const response = await fetch("http://<YOUR_IP_ADRESS>:8000", {  //adding localhost wouldn't work here, instead we have to add server's IP adress
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ username, password }),
