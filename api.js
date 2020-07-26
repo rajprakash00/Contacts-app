@@ -10,7 +10,7 @@ export const fetchUsers = async () => {
 };
 
 export const login = async (username, password) => {
-  const response = await fetch("http://192.168.42.15:8000", {
+  const response = await fetch("http://<YOUR_IP_ADRESS>:8000", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ username, password }),

@@ -6,7 +6,7 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 
 const persistConfig = {
-  key: "root",
+  key: "main",
   storage,
   blacklist: ["auth"], //this is the main mistake i was doing while persisting the contacts i was persisting the auth info too
 };

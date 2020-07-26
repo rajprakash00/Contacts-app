@@ -12,10 +12,10 @@ class ContactDetailsScreen extends Component {
         <Text style={{ textAlign: "center", fontSize: 18, marginTop: 20 }}>
           {this.props.navigation.getParam("phone")}
         </Text>
-        <Button
+        {/* <Button
           title="Got to random contact"
           onPress={this.goToRandomContact}
-        />
+       />*/}
       </View>
     );
   }

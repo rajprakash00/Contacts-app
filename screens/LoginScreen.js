@@ -13,7 +13,7 @@ class LoginScreen extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.token, this.state.username, this.state.password);
+    console.log(nextProps.token);
     if (nextProps.token) {
       this.props.navigation.navigate("Main");
     }
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     flex: 1,
+    backgroundColor: "#FFDDE2FF",
   },
   text: {
     textAlign: "center",

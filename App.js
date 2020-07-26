@@ -21,6 +21,8 @@ import ContactDetailsScreen from "./screens/ContactDetailsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import { PersistGate } from "redux-persist/integration/react";
 
+console.disableYellowBox = true;
+
 const MainStack = createStackNavigator(
   {
     ContactList: ContactListScreen,
@@ -32,7 +34,7 @@ const MainStack = createStackNavigator(
     navigationOptions: {
       headerTintColor: "#a41034",
       headerStyle: {
-        backgroundColor: "#fff",
+        backgroundColor: "#9ED9CCFF",
       },
     },
   }

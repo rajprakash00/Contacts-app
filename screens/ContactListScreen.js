@@ -31,7 +31,11 @@ class ContactListScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="toggle contacts" onPress={this.toggleContacts} />
+        <Button
+          color="#00ADB5"
+          title="toggle contacts"
+          onPress={this.toggleContacts}
+        />
 
         {this.state.showContacts && (
           <SectionListContacts
