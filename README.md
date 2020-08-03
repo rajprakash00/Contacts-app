@@ -21,10 +21,14 @@
 
 ### Installation :man_technologist:
 
-```
+- Clone :clown_face: it
+
 - npm install
 
-- expo start /npm start
-```
+- Go to [here](https://github.com/rajprakash00/Contacts-app/blob/cc577d0c6b91614349fe272e96f1144c43a3a883/api.js#L13) and add your IP adress
+
+- npm start
+
+<b>For now I've used a dummy authentication(was too lazy :woozy_face:) having username as <i>username</i> and password as <i>password</i></b>
 
 <b>Download expo mobile app ,scan the QR code(in the terminal) & DONE!!:tada::tada:</b>
